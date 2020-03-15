@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import inspect
 import unittest
 from pathlib import Path
 
@@ -19,36 +20,28 @@ import markdown
 
 from pymdown_include import PymdownInclude
 
-MD = """\
-{!sections.md!+0}
-{!sections.md!+1}
-{!sections.md!+3}"""
 
-HTML = """\
-<p>root</p>
-<h1>head1</h1>
-<p>text1</p>
-<h2>head2</h2>
-<p>text2
-root</p>
-<h2>head1</h2>
-<p>text1</p>
-<h3>head2</h3>
-<p>text2
-root</p>
-<h4>head1</h4>
-<p>text1</p>
-<h5>head2</h5>
-<p>text2</p>"""
+class RecursiveTests(unittest.TestCase):
 
+    def setUp(self):
+        self.md = markdown.Markdown(
+            extensions=[PymdownInclude(SEARCH_PATH=[Path(__file__).parent])]
+        )
 
-class Test(unittest.TestCase):
+    def test_rec(self):
 
-    def test(self):
-        md = markdown.Markdown(
-            extensions=[PymdownInclude(SEARCH_PATH=[Path(__file__).parent])])
-        self.assertEqual(md.convert(MD), HTML)
+        MD = """
+            A {!rec.md!} B
+        """
 
+        HTML = """
+            <p>A X line 1
+            line 2
+            line 3 Y B</p>
+        """
+
+        self.assertEqual(self.md.convert(
+            inspect.cleandoc(MD)), inspect.cleandoc(HTML))
 
 if __name__ == '__main__':
     unittest.main()

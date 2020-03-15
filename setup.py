@@ -14,24 +14,14 @@
 
 from pathlib import Path
 
-from setuptools import setup
+from setuptools import setup, find_packages
 
 with open(Path(__file__).parent / 'README.rst') as f:
     long_description = f.read()
 
 setup(
     name='pymdown-include',
-    packages=["pymdown_include"],
-    package_data={'pymdown_include': [
-        'unit_tests/*.txt',
-        'unit_tests/*.md'
-    ]},
-    data_files=[
-        'README.md',
-        'LICENSE-2.0.txt',
-        'requirements.txt',
-        'scripts/build.sh',
-    ],
+    packages=find_packages(exclude=["tests"]),
     version='0.0.1',
     description='Include...',
     long_description=long_description,

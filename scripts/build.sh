@@ -13,5 +13,5 @@ python setup.py sdist bdist_wheel
 
 # Test
 coverage erase
-coverage run --source=pymdown_include --omit=pymdown_include/unit_tests/* -m setup test
+coverage run --source=pymdown_include --omit=pymdown_include/unit_tests/* -m pytest
 coverage report -m
