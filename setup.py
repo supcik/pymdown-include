@@ -35,7 +35,7 @@ setup(
         'Topic :: Software Development :: Libraries :: Python Modules',
         'Topic :: Text Processing :: Filters',
         'Topic :: Text Processing :: Markup :: HTML',
-        'License :: OSI Approved :: Apache-2',
+        'License :: OSI Approved :: Apache Software License',
         'Programming Language :: Python :: 3.5',
     ],
     entry_points={
