@@ -57,7 +57,7 @@ class PymdownInclude(Extension):
                     path = p
                     break
             else:
-                raise Exception(f"I can't find {file_name} in {self.getConfig('SEARCH_PATH')}")
+                raise Exception(f"I can't find {file_name} in {self.getConfig('SEARCH_PATH')} from {Path.cwd()}")
         return open(path, mode="rt", encoding=encoding)
 
 
