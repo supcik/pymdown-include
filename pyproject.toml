@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pymdown-include"
-version = "0.1.0"
+version = "0.1.1"
 description = "Pymdown include plugin"
 readme = "README.md"
 authors = ["Jacques Supcik <jacques.supcik@hefr.ch>"]
